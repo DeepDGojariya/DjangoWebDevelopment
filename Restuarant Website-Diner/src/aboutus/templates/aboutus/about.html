@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+<div class="main-wrap">
+  <div class="cover_1 cover_sm">
+    <div class="img_bg" style="background-image: url({% static 'site_static/img/slider-1.jpg' %})"
+      data-stellar-background-ratio="0.5">
+      <div class="container">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-7" data-aos="fade-up">
+            <h2 class="heading text-center">About Us</h2>
+            <p class="lead"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> <!-- .cover_1 -->
+
+  <div class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7" data-aos="fade-up">
+          <img src="{% static 'site_static/img/about_1.png' %}" alt="Image placeholder" class="img-fluid">
+        </div>
+        <div class="col-md-5 pl-md-5" data-aos="fade-up" data-aos-delay="200">
+          <h2 class="mb-4">Restaurnts History</h2>
+          <p>Craving some delicious food? Maybe you’re in the mood for a juicy steak? No matter what kind of meal you
+            have in mind, The Diner Restaurant is ready to prepare it for you.
+
+            Since 1993, The Spot Restaurant has been the go-to diner for residents of Binghamton, NY. </p>
+          <p>We serve breakfast all day, in addition to wholesome and flavorful dining options for brunch and dinner.
+            From burgers to salads, seafood to pastas, you’ll find all kinds of hearty meals prepared fresh at The Diner
+            Restaurant. Our diner also has a full bakery with delicious baked goods and other treats, including our
+            famous cheesecake. Sounds delicious, right?
+
+            The Spot Restaurant is open daily from 5 a.m. to 11 p.m. We’re here to serve you the best food around,
+            whenever you’re looking for a great American restaurant in Binghamton, NY.</p>
+
+
+        </div>
+      </div>
+    </div>
+  </div> <!-- .section -->
+
+  <div class="section">
+    <div class="container">
+      <div class="row justify-content-center mb-5" data-aos="fade-up">
+        <div class="col-md-8  text-center">
+          <h2 class="mb-3">Why Choose Us</h2>
+          
+        </div>
+      </div>
+      <div class="row large-gutters">
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <img src="{% static 'site_static/img/img_2.jpg' %}" alt="Image placeholder" class="img-fluid rounded">
+        </div>
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="accordion" id="accordion">
+            <div class="accordion-item">
+              <h3 class="mb-0">
+                <a class="btn-block p-3" data-toggle="collapse" href="#collapseOne" role="button" aria-expanded="true"
+                  aria-controls="collapseOne">Quality Cuisine <span class="icon"></span></a>
+              </h3>
+              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="p-3">
+                  <p>
+                      Most people are looking for something different when they decide to dine out.
+                      A great restaurant promises to offer something that is not available elsewhere.
+                      Being different is a good thing and it is a quality to look out for when choosing 
+                      a restaurant. If providing good food and service is all that a restaurant can offer, 
+                      that is nothing new. If customers can get the same experience from dozens of other restaurants, 
+                      they are bound to overlook the restaurant. A great restaurant will have one or several unique features
+                      that will stand out in the patrons mind and this creates a competitive advantage.</p>
+                </div>
+              </div>
+            </div> <!-- .accordion-item -->
+
+            <div class="accordion-item">
+              <h3 class="mb-0">
+                <a class="btn-block p-3" data-toggle="collapse" href="#collapseTwo" role="button" aria-expanded="false"
+                  aria-controls="collapseTwo">Fresh Food <span class="icon"></span></a>
+              </h3>
+              <div id="collapseTwo" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="p-3">
+                  <p>When people walk through the restaurant doors, they are expecting to enjoy their meal.
+                   A good restaurant does not compromise when it comes to serving great food. Setting high
+                    standards when it comes to the food quality is vital and it is important to ensure that 
+                    customers get the same quality every time. Good serving quality and tasty food will earn 
+                    a restaurant a good reputation, causing customers to make return visits. A good restaurant
+                     will have a highly experienced chef, who prepares meals using the best, high quality ingredients to ensure consistency.</p>
+                </div>
+              </div>
+            </div> <!-- .accordion-item -->
+
+            <div class="accordion-item">
+              <h3 class="mb-0">
+                <a class="btn-block p-3" data-toggle="collapse" href="#collapseThree" role="button"
+                  aria-expanded="false" aria-controls="collapseThree">Friendly Staff <span class="icon"></span></a>
+              </h3>
+              <div id="collapseThree" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="p-3">
+                  <p>No matter how tasty your menu, customers won't come back if they have bad experiences with your customer service.
+                   For this reason, we train employees to offer good customer service. In fact, the first and best step of hiring our 
+                   staff is  the one who  who loves to serve. 
+                   After that, we train them how to serve by showing them examples of great customer service and explaining how they can mimic those examples.</p>
+                </div>
+              </div>
+            </div> <!-- .accordion-item -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> <!-- .section -->
+
+  <div class="section">
+    <div class="container">
+      <div class="row justify-content-center mb-5" data-aos="fade-up">
+        <div class="col-md-8  text-center">
+          <h2 class="mb-3">Restaurants Chef</h2>
+          
+        </div>
+      </div>
+      <div class="row">
+        {% for chefs in chef %}
+              <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+            
+                <img src="{{chefs.img.url}}" alt="Image placeholder" class="img-fluid mb-4 rounded">
+                <h3 class="mb-3">{{chefs.name}}</h3>
+                <p class="post-meta text-muted">{{chefs.subtitle}}</p>
+                <p class="mb-5">{{chefs.bio|truncatewords:55}}</p>
+                <p><a href="https://en.wikipedia.org/wiki/{{chefs.name}}" class="btn btn-primary btn-outline-primary btn-sm">Read More</a></p>
+        
+              </div>
+        {% endfor %}
+       </div>
+    </div>
+  </div> <!-- .section -->
+
+</div> <!-- .main-wrap -->
+{% endblock body %}

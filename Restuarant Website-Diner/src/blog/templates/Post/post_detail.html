@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %} 
+  
+      <div class="main-wrap">
+        <div class="cover_1 cover_sm">
+          <div class="img_bg" style="background-image: url({% static 'site_static/img/slider-1.jpg' %})" data-stellar-background-ratio="0.5">
+            <div class="container">
+              <div class="row align-items-center justify-content-center">
+                <div class="col-md-7 text-center" data-aos="fade-up">
+                 
+                 
+                 
+                      <h2 class="heading mb-4">{{ext}}</h2>
+
+                      <div class="post-info">
+                        <div class="date-info">{{ext.created}}</div>
+                        <div class="category-info"><span class="seperator">|</span>In <a href="#" data-title="View all posts in Lifestyle" title="View all posts in Lifestyle">{{ext.categories}}</a></div>
+                        <div class="author-info"><span class="seperator">|</span>By <a href="#">{{ext.author}}</a></div>
+                      </div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> <!-- .cover_1 -->
+
+       <div class="section">
+          <div class="container">
+            
+            <div class="row">
+            <div class="col-sm-12"><img src = "{{ext.img.url}}" style="width:50%;margin:15px auto;display:block;border:5px solid black"></div>
+     
+              <p style="font-size:18px;">{{ext.content}}</p>
+              {% comment  %}
+                  
+                  <div class="col-md-8">
+                    <div class="tag-widget post-tag-container mb-5 mt-5">
+                      <div class="tagcloud">
+                      {% for tag  in ext.tags.all  %}
+                        <a href="{% url 'blog:post_by_tag' tag %}" class="tag-cloud-link">{{tag.name}}</a>
+                      {% endfor %} 
+                      </div>
+                    </div>
+                  {% endcomment %}
+
+
+                    <div class="pt-5 mt-5">
+                      <h3 class="mb-5">Public Comments</h3>
+                      <ul class="comment-list">
+                          {% for comment in comments %}
+                          
+                            <li class="comment">
+                              <div class="vcard bio">
+                                
+                              </div>
+                              <div class="comment-body">
+                                <h3>{{comment.name}}</h3>
+                                <div class="meta">{{comment.created}}</div>
+                                <p>{{comment.content}}</p>
+                                
+                              </div>
+                            </li>
+                          {% endfor %}
+                      </ul>
+                      <!-- END comment-list -->
+                      
+                      <div class="comment-form-wrap pt-5 " style="width:1200px">
+                        <h3 class="mb-5">Leave a comment</h3>
+                        <form method="POST" class="p-5 bg-light">
+                              {% csrf_token %}
+                              
+                                <div class="form-group">
+                                  <label for="name">Name </label>
+                                  <div class="form-field-icon-wrap">
+                                  {{comment_form.name}} 
+                                  <span><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" style="width:500px;height:450px;position:absolute;left:500px;border-radius:100px"></span>
+                                  </div>
+                                </div>
+                                
+                                
+                                
+
+                                <div class="form-group">
+                                  <label for="message">Comment</label>
+                                  <div class="form-field-icon-wrap">
+                                        {{comment_form.content}}
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                   <button type="submit" class="btn btn-primary justify-content-center" id='submit'>Submit</button>
+                                </div>
+
+                        </form>
+                      </div>
+                    </div>
+
+                  
+                  </div> <!-- .col-md-8 -->
+              
+              
+
+            </div>
+
+            
+          </div>
+        </div> <!-- .section -->
+      
+
+
+      </div> <!-- .main-wrap -->
+{% endblock body %} 
+
+      
