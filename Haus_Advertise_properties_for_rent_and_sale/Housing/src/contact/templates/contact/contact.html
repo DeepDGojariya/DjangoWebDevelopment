@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block body %}
+<section class="probootstrap-slider flexslider2 page-inner">
+  <div class="overlay"></div>
+  <div class="probootstrap-wrap-banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+
+          <div class="page-title probootstrap-animate">
+            <div class="probootstrap-breadcrumbs">
+              <a href="#">Home</a><span>Contact</span>
+            </div>
+            <h1>Contact</h1>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <ul class="slides">
+    <li style="background-image: url(img/slider_1.jpg);"></li>
+    <li style="background-image: url(img/slider_4.jpg);"></li>
+    <li style="background-image: url(img/slider_2.jpg);"></li>
+  </ul>
+</section>
+<!-- END: slider  -->
+
+<section class="probootstrap-section">
+  <div class="container">
+    <div class="row">
+      {% for message in messages %}
+      <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        {{ message }}
+      </div>
+      {% endfor %}
+      <div class="col-md-8">
+        <form method="post" class="probootstrap-form mb60">
+          {% csrf_token %}
+          {% bootstrap_form contact_form%}
+          {%buttons%}
+          <button type='submit' class='btn btn-primary'>Send Feedback</button>
+          {%endbuttons%}
+        </form>
+      </div>
+      <div class="col-md-3 col-md-push-1">
+        <h4>Contact Details</h4>
+        <ul class="with-icon colored">
+          <li><i class="icon-location2"></i> <span>D.J.Sanghvi COE,&nbsp;Ville Parle(W),&nbsp;Mumbai.</span></li>
+          <li><i class="icon-mail"></i><span>&nbsp;&nbsp;&nbsp;&nbsp;{{contact_details.email}}</span></li>
+          <li><i class="icon-phone2"></i><span>{{contact_details.phone_no}}</span></li>
+        </ul>
+
+        <h4>Feedback</h4>
+        <p style="text-align:justify;">Your Feedback is very crucial to us.Without it we could not improve our existing services.So please leave a Feedback
+        so that we as an organization could excel.</p>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+{% endblock body %}

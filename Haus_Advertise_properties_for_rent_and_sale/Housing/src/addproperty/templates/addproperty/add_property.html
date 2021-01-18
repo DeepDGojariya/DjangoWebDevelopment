@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% block body %}
+
+<section class="probootstrap-section">
+  <div class="container">
+    <div class="row">
+    <br><br>
+    {% if messages %}
+     {% for message in messages %}
+      <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        {{ message }}
+        </div>
+        {% endfor %}
+      {% endif %}
+      
+    <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <h2 style="margin:100px 0 50px 0">Add This Property</h2>
+        <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          {% bootstrap_form property_form %}
+          {% buttons %}
+          <button type='submit' class='btn btn-primary'>Add Property</button>
+          {% endbuttons %}
+        </form>
+      </div>
+      <div class="col-md-2"></div>
+      <!--<div class="col-md-6">
+        <img src = {%static 'img/person_1.jpg'%} class="svg my-auto" style="margin-top:auto;margin-bottom:auto;">
+      </div>-->
+    </div>
+  </div>
+</section>
+
+{% endblock body %}

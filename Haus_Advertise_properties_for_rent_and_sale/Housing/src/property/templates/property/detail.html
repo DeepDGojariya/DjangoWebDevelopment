@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block body %}
+
+<section class="probootstrap-slider flexslider2 page-inner">
+  <div class="overlay"></div>
+  <div class="probootstrap-wrap-banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+
+          <div class="page-title probootstrap-animate">
+            <div class="probootstrap-breadcrumbs">
+              <a href="#">Home</a><span><a
+                  href="{% url 'property:property_list' %}">Properties</a></span><span>{{property_detail}}</span>
+            </div>
+            <h1>{{property_detail}}</h1>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <ul class="slides">
+    <li style="background-image: url(img/slider_1.jpg);"></li>
+    <li style="background-image: url(img/slider_4.jpg);"></li>
+    <li style="background-image: url(img/slider_2.jpg);"></li>
+  </ul>
+</section>
+<!-- END: slider  -->
+
+<section class="probootstrap-section">
+  <div class="container">
+    {% for message in messages %}
+      <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+          {{ message }}
+  </div>
+{% endfor %}
+<div class="container">
+    <div class="row">
+    
+      <div class="col-md-offset-2 col-md-7">
+        <p><img src="{{property_detail.image.url}}" class="img-responsive"
+            style="display:block;margin-left:auto;margin-right:auto;border:5px solid black"
+            alt="Free Bootstrap Template by uicookies.com"></p>
+      </div>
+    </div>
+    </div>
+    <hr>
+    <div class="row">
+    {% if user.is_authenticated %}
+      <div class="col-md-6">
+        <h2>Property Description</h2>
+
+        <p>For {{property_detail.type_of_property}},</p>
+        <p>{{property_detail.description}}</p>
+        <p>Location : {{property_detail.location}}</p>
+        <p>Total Area : {{property_detail.area}} sqft.</p>
+        <p>Beds : {{property_detail.beds_number}}</p>
+        <p>Baths : {{property_detail.baths_number}}</p>
+        <p>Garages : {{property_detail.garages_number}}</p>
+        <p>Price : &#8377;{{property_detail.price}}/-</p>
+
+      </div>
+      <!--</div>-->
+
+      <!--
+    <section class="probootstrap-section">
+    <div class="container">
+      
+      <div class="row">
+        <div class="col-md-12">
+         
+        </div>
+      </div>
+      <div class="row">-->
+      <div class="col-md-6">
+
+        <h2>Enquire About This Property</h2>
+        
+        <form action="" method="POST">
+          {% csrf_token %}
+          {% bootstrap_form reserve_form %}
+          {% buttons %}
+          <button type='submit' class='btn btn-primary'>Send</button>
+          {% endbuttons %}
+        </form>
+      </div>
+    </div>
+    {% else %}
+     <div class="col-md-offset-3 col-md-6">
+        <h2>Property Description</h2>
+
+        <p>For {{property_detail.type_of_property}},</p>
+        <p>{{property_detail.description}}</p>
+        <p>Location : {{property_detail.location}}</p>
+        <p>Total Area : {{property_detail.area}} sqft.</p>
+        <p>Beds : {{property_detail.beds_number}}</p>
+        <p>Baths : {{property_detail.baths_number}}</p>
+        <p>Garages : {{property_detail.garages_number}}</p>
+        <p>Price : &#8377;{{property_detail.price}}/-</p>
+        <p>Note : To Enquire about this property please register.</p>
+      </div>
+    {% endif %}
+</section>
+
+
+
+{% endblock body %}

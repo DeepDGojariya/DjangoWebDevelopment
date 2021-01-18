@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block body %}
+
+<section class="probootstrap-slider flexslider2 page-inner">
+  <div class="overlay"></div>
+  <div class="probootstrap-wrap-banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+
+          <div class="page-title probootstrap-animate">
+            <div class="probootstrap-breadcrumbs">
+              <a href="#">Home</a><span>Properties</span>
+            </div>
+            <h1>Properties</h1>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <ul class="slides">
+    <li style="background-image: url(img/slider_1.jpg);"></li>
+    <li style="background-image: url(img/slider_4.jpg);"></li>
+    <li style="background-image: url(img/slider_2.jpg);"></li>
+  </ul>
+</section>
+<!-- END: slider  -->
+
+<section class="probootstrap-section probootstrap-section-lighter">
+  <div class="container">
+    <div class="row">
+      {% if property_list %}
+      {% for property in property_list  %}
+      {% if property.approved == True %}
+     <!-- <div class="col-md-6 col-sm-6">-->
+      {% if forloop.counter|divisibleby:2 %}<div class="col-md-6">{% else %}
+      <div class="col-md-5">
+      {% endif %}
+        <div class="probootstrap-card probootstrap-listing">
+          <div class="probootstrap-card-media">
+            <img src="{{property.image.url}}" class="img-responsive center">
+          </div>
+          <div class="probootstrap-card-text">
+            <h2 class="probootstrap-card-heading">
+            <a href="{% url 'property:property_detail' property.id %}" data-toogle="tooltip" title="View More">
+            
+            {{property.description|truncatechars:35}}
+            </a>
+            </h2>
+            <div class="probootstrap-listing-location">
+              <i class="icon-location2"></i> <span>{{property.location}}</span>
+            </div>
+            <div class="probootstrap-listing-category {% if property.type_of_property == 'rent' %}for-rent {% else %}for-sale{% endif %}">
+              <span>for {{property.type_of_property}}</span></div>
+            <div class="probootstrap-listing-price">
+              <strong>&#x20B9;{{property.price}}</strong>{% if property.type_of_property == 'rent' and 'bunglow' not in property.description|lower %}/
+              month{% else %}{% endif %} </div>
+          </div>
+          <div class="probootstrap-card-extra">
+            <ul>
+              <li>
+                Area
+                <span>{{property.area}} ft<sup>2</sup></span>
+              </li>
+              <li>
+                Beds
+                <span>{{property.beds_number}}</span>
+              </li>
+              <li>
+                Baths
+                <span>{{property.baths_number}}</span>
+              </li>
+              {% if property.garages_number >= 1 %}
+              <li>
+                Garages
+                <span>{{property.garages_number}}</span>
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+
+        <!-- END listing -->
+        
+       
+      </div>
+      {% if forloop.counter|divisibleby:2 %}
+      <div class="clearfix visible-sm-block"></div>
+      {% endif %}
+      
+      {% endif %}
+      {% endfor %}
+      {% else %}
+      <div class="col-md-12 col-sm-6">
+      <br><br><br>
+        <h2><b> No Properties with this name or type.</b></h2>
+        <h3> Try searching something else like : &nbsp;3 Bhk/Mumbai/flat/bunglow,etc.</h3>
+        <br><br><br>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+{% endblock body %}

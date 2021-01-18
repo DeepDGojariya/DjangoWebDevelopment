@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+  <section class="probootstrap-slider flexslider2 page-inner">
+    <div class="overlay"></div>
+    <div class="probootstrap-wrap-banner">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+
+            <div class="page-title probootstrap-animate">
+              <div class="probootstrap-breadcrumbs">
+                <a href="#">Home</a><span>About</span>
+              </div>
+              <h1>About Us</h1>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <ul class="slides">
+      <li style="background-image: url(img/slider_1.jpg);"></li>
+      <li style="background-image: url(img/slider_4.jpg);"></li>
+      <li style="background-image: url(img/slider_2.jpg);"></li>
+    </ul>
+  </section>
+  <!-- END: slider  -->
+
+  <section class="probootstrap-section">
+    <div class="container">
+      <div class="row heading">
+        <div class="col-md-12"><h2 class="mt0 mb50 text-center">Our Company</h2></div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <p><img src="{% static 'img/slider2.jpg'%}" class="img-responsive" alt="Free Bootstrap Template by uicookies.com"></p>
+        </div>
+      </div>
+  
+    </div>
+  </section>
+
+  <section class="probootstrap-half">
+    <div class="image-wrap">
+      <div class="image" style="background-image: url({% static 'img/vision.jpg'%});"></div>
+    </div>
+    <div class="text">
+     
+      <h3 class="mt0 mb40">Our Vision</h3>
+      <p style="font-size:22px">Our vision is to expand our regional cover. Right now we are focused on India with only specific regions but our vision to grow in terms of area and properties and want customers to have easy views of houses, bungalows, villas almost everywhere possible. our prime motive is to expand in India itself and also try to expand to foreign lands.</p><br><br><br><br>
+      
+      
+    </div>
+  </section>
+  <section class="probootstrap-half reverse">
+    <div class="image-wrap">
+      <div class="image" style="background-image: url({% static 'img/services.jpg'%});"></div>
+    </div>
+    <div class="text">
+      <p class="mb10 subtitle">Why Choose Us</p>
+      <h3 class="mt0 mb40">You Will Love Our Services</h3>
+      <p style="font-size:22px">We provide proper houses to customers at the best cost. Our site helps people to get their optimum and luxurious houses with proper location and view. The transactions are secured and fast without any inconvenience. We also added a cost prediction algorithm for our customers to get approximate prices according to their needs and location. We have gotten 5-star reviews from many of our customers thus proving our services.</p>
+      
+      
+    </div>
+  </section>
+   <section class="probootstrap-half">
+    <div class="image-wrap">
+      <div class="image" style="background-image: url({% static 'img/mission.jpg'%});"></div>
+    </div>
+    <div class="text">
+      <p class="mb10 subtitle"></p>
+      <h3 class="mt0 mb40">Our Mission</h3>
+     <p style="font-size:22px">Our mission is to provide each and every customer with appropriate houses, villas, bungalows to buy or rent at proper cost without any inconvenience.  We have been getting a satisfactory response till now but we want to go further ahead than this. We want our customers to easily explore and discover properties without any problem.</p><br><br><br><br>
+      
+      
+    </div>
+  </section>
+
+
+{% endblock body %}

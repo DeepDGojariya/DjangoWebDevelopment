@@ -1,0 +1,259 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<title>uiCookies:Haus &mdash; Free Bootstrap Theme, Free Responsive Bootstrap Website Template</title>-->
+    <title>Housing</title>
+    <meta name="description" content="Free Bootstrap Theme by uicookies.com">
+    <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
+    
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/styles-merged.css'%}">
+    <link rel="stylesheet" href="{% static 'css/style.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/custom.css'%}">
+
+
+  </head>
+  <body>
+
+  <!-- START: header -->
+  
+  <div class="probootstrap-loader"></div>
+
+  <header role="banner" class="probootstrap-header">
+    <div class="container">
+        <a href="{%url 'home:home'%}" class="probootstrap-logo">Housing<span>.</span></a>
+        
+        <a href="#" class="probootstrap-burger-menu visible-xs" ><i>Menu</i></a>
+        <div class="mobile-menu-overlay"></div>
+
+        <nav role="navigation" class="probootstrap-nav hidden-xs">
+          <ul class="probootstrap-main-nav ">
+            <li {% if category_list %} class="active" {% endif %}><a href="{%url 'home:home'%}">Home</a></li>
+            <li {% if property_list %} class="active" {% endif %}><a href="{%url 'property:property_list' %}">Properties</a></li>
+            <li {% if agent_list %} class="active" {% endif %}><a href="{%url 'agents:agent_list' %}">Agents</a></li>
+            <li {% if empty %} class="active" {% endif %}><a href="{%url 'aboutus:about_us' %}">About</a></li>
+            <li {% if contact_form %} class="active" {% endif %}><a href="{%url 'contact:send_mail'%}">Contact</a></li>
+            {% if request.user.is_authenticated %}
+            <li {% if property_form %} class="active" {% endif %}><a href="{%url 'addproperty:add_property'%}">Add Property</a></li>
+            <li {% if select_city_form %} class="active" {%elif predict_form%}class="active {% else %} {%endif%}"><a href="{%url 'predict:city_select'%}">Predict Price</a></li>
+            <li><a href="{%url 'login:logout'%}">Logout</a>&nbsp;&nbsp;&nbsp;&nbsp; <b> Logged in as {{request.user.username}}.</b></li>
+            {% else %}
+            <li {% if registration_form %} class="active" {% endif %}><a href="{%url 'login:register'%}">Register</a></li>
+            <li {% if login_form %} class="active" {% endif %}><a href="{%url 'login:login'%}">Login</a></li>
+            {% endif %}
+          </ul>
+         
+        </nav>
+    </div>
+  </header>
+  <!-- END: header -->
+{% block body %}
+
+
+{% endblock body %}
+<hr>
+  <footer class="" style="background-image: url(img/slider_3.jpg);background-color:black">
+    <div class="container mb0" style="z-index:1;">
+      <!--<div class="row">
+        <div class="col-md-3">
+          <div class="probootstrap-footer-widget">
+            <h4 class="heading">About Haus.</h4>
+            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+            <p><a href="#">Read more...</a></p>
+          </div> 
+        </div>
+        <div class="col-md-3">
+          <div class="probootstrap-footer-widget probootstrap-link-wrap">
+            <h4 class="heading">Quick Links</h4>
+            <ul class="stack-link">
+              <li><a href="#">Property Listing</a></li>
+              <li><a href="#">Rent Properties</a></li>
+              <li><a href="#">Sell Properties</a></li>
+              <li><a href="#">Agents</a></li>
+              <li><a href="#">Testimonial</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="probootstrap-footer-widget">
+            <h4 class="heading">Popular Cities</h4>
+            <ul class="stack-link">
+              <li><a href="#">New York <small>(320 properties)</small></a></li>
+              <li><a href="#">San Francisco <small>(294 properties)</small></a></li>
+              <li><a href="#">Brooklyn <small>(300 properties)</small></a></li>
+              <li><a href="#">Chicago <small>(268 properties)</small></a></li>
+              <li><a href="#">Los Angeles <small>(342 properties)</small></a></li>
+            </ul>
+          </div> 
+        </div>
+        <div class="col-md-3">
+          <div class="probootstrap-footer-widget probootstrap-link-wrap">
+            <h4 class="heading">Subscribe</h4>
+            <p>Far far away behind the word mountains far from.</p>
+            <form action="#">
+              <div class="form-field">
+                <input type="text" class="form-control" placeholder="Enter your email">
+                <button class="btn btn-primary" style="margin:5px;border-radius:3.5px">Send</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      -->
+      
+      <div class="row copyright text-center"style="margin-top:50px">
+        <div class="col-md-12">
+          <div class="probootstrap-footer-widget">
+          <p>&copy;2020 Designed and Developed By Deep,Darshit & Aditya.<br> All Rights Reserved.</p>
+            
+          </div>
+        </div>
+        <!--<div class="col-md-6">
+          <div class="probootstrap-footer-widget right">
+            <ul class="probootstrap-footer-social">
+              <li><a href="#"><i class="icon-twitter"></i></a></li>
+              <li><a href="#"><i class="icon-facebook"></i></a></li>
+              <li><a href="#"><i class="icon-instagram2"></i></a></li>
+            </ul>
+          </div>
+        </div>-->
+      </div>
+    </div>
+  
+
+  
+  
+  </footer>
+  <!--<footer class="probootstrap-footer probootstrap-bg" style="background-image: url(img/slider_3.jpg);padding-top:35px;padding-bottom:6px;">
+    <div class="container ">
+      <div class="row mb60">
+      
+        <div class="col-md-6">
+          <div class="probootstrap-footer-widget probootstrap-link-wrap">
+            <h4 class="heading">Quick Links</h4>
+            
+              <a href="#" style="margin-right:5px;">Properties</a>
+              <a href="#" style="margin-right:5px;">About Us</a>
+              <a href="#" style="margin-right:5px;">Contact Us</a>
+              <a href="#" style="margin-right:5px;">Agents</a>
+              
+            
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="probootstrap-footer-widget">
+            <h4 class="heading">Popular Cities</h4>
+            
+              <a href="#" style="margin-right:20px;">Mumbai <small>(320 properties)</small></a>
+              <a href="#" style="margin-right:5px;">New Delhi <small>(294 properties)</small></a>
+              <br>
+              <a href="#" style="margin-right:7px;">Bangalore <small>(300 properties)</small></a>
+              <a href="#" style="margin-right:5px;">Kolkata <small>(268 properties)</small></a>
+              <br>
+              <a href="#" style="margin-right:5px;">Hyderabad<small>(342 properties)</small></a>
+         
+          </div> 
+        </div>
+      
+      </div>
+      <div class="row copyright">
+        <div class="col-md-offset-3 col-md-6">
+          <div class="probootstrap-footer-widget">
+            <p>&copy;2020 Designed and Developed By Deep,Darshit & Aditya.<br> All Rights Reserved.</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="probootstrap-footer-widget right">
+            <ul class="probootstrap-footer-social">
+              <li><a href="#"><i class="icon-twitter"></i></a></li>
+              <li><a href="#"><i class="icon-facebook"></i></a></li>
+              <li><a href="#"><i class="icon-instagram2"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+ <!-- <footer class="probootstrap-footer probootstrap-bg" style="background-image: url(img/slider_3.jpg)">
+    <div class="container">
+      <div class="row mb60">
+        <div class="col-md-3">
+          <div class="probootstrap-footer-widget">
+            <h4 class="heading">About Haus.</h4>
+            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+            <p><a href="#">Read more...</a></p>
+          </div> 
+        </div>
+        <div class="col-md-3">
+          <div class="probootstrap-footer-widget probootstrap-link-wrap">
+            <h4 class="heading">Quick Links</h4>
+            <ul class="stack-link">
+              <li><a href="#">Property Listing</a></li>
+              <li><a href="#">Rent Properties</a></li>
+              <li><a href="#">Sell Properties</a></li>
+              <li><a href="#">Agents</a></li>
+              <li><a href="#">Testimonial</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="probootstrap-footer-widget">
+            <h4 class="heading">Popular Cities</h4>
+            <ul class="stack-link">
+              <li><a href="#">New York <small>(320 properties)</small></a></li>
+              <li><a href="#">San Francisco <small>(294 properties)</small></a></li>
+              <li><a href="#">Brooklyn <small>(300 properties)</small></a></li>
+              <li><a href="#">Chicago <small>(268 properties)</small></a></li>
+              <li><a href="#">Los Angeles <small>(342 properties)</small></a></li>
+            </ul>
+          </div> 
+        </div>
+        <div class="col-md-3">
+          <div class="probootstrap-footer-widget probootstrap-link-wrap">
+            <h4 class="heading">Subscribe</h4>
+            <p>Far far away behind the word mountains far from.</p>
+            <form action="#">
+              <div class="form-field">
+                <input type="text" class="form-control" placeholder="Enter your email">
+                <button class="btn btn-subscribe">Send</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="row copyright">
+        <div class="col-md-6">
+          <div class="probootstrap-footer-widget">
+            <p>&copy; 2017 <a href="https://uicookies.com/">uiCookies:Haus</a>. Designed by <a href="https://uicookies.com/">uicookies.com</a> <br> Demo Photos from <a href="https://pixabay.com/">Pixabay</a> &amp; <a href="https://unsplash.com/">Unsplash</a></p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="probootstrap-footer-widget right">
+            <ul class="probootstrap-footer-social">
+              <li><a href="#"><i class="icon-twitter"></i></a></li>
+              <li><a href="#"><i class="icon-facebook"></i></a></li>
+              <li><a href="#"><i class="icon-instagram2"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>Adi original-->
+
+
+  <div class="gototop js-top">
+    <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
+  </div>
+  
+
+  <script src="{% static 'js/scripts.min.js'%}"></script>
+  <script src="{% static 'js/main.min.js'%}"></script>
+  <script src="{% static 'js/custom.js'%}"></script>
+
+  </body>
+</html>

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block body %}
+  <section class="probootstrap-slider flexslider2 page-inner">
+    <div class="overlay"></div>
+    <div class="probootstrap-wrap-banner">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+
+            <div class="page-title probootstrap-animate">
+              <div class="probootstrap-breadcrumbs">
+                <a href="#">Home</a><span>Register</span>
+              </div>
+              <h1>Register</h1>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <ul class="slides">
+      <li style="background-image: url(img/slider_1.jpg);"></li>
+      <li style="background-image: url(img/slider_4.jpg);"></li>
+      <li style="background-image: url(img/slider_2.jpg);"></li>
+    </ul>
+  </section>
+  <!-- END: slider  -->
+  
+  <section class="probootstrap-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <form  method="post" class="probootstrap-form mb60">
+           {% csrf_token %}
+           {% bootstrap_form registration_form%}
+           {%buttons%}
+           <button type='submit' class='btn btn-primary'>Register</button>
+          {%endbuttons%}
+          </form>
+        </div>
+        <div class="col-md-3 col-md-push-1">
+          <h4>Contact Details</h4>
+          <ul class="with-icon colored">
+            <li><i class="icon-location2"></i> <span>	D.J.Sanghvi COE, Ville Parle(W), Mumbai.</span></li>
+            <li><i class="icon-mail"></i><span> housingprojectsem5@gmail.com</span></li>
+            <li><i class="icon-phone2"></i><span>	8451064494</span></li>
+          </ul>
+
+          
+        </div>
+      </div>
+    </div>
+  </section>  
+  
+  
+  
+
+  
+
+{% endblock body %}
